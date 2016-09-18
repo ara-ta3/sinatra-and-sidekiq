@@ -1,5 +1,5 @@
 require "./app.rb"
-require "./workers/EventWorker.rb"
+require "./Worker.rb"
 require "sidekiq"
 require 'sidekiq/web'
 

@@ -16,8 +16,8 @@ class App < Sinatra::Base
 
     post '/' do
         d = params[:x]
-        @@redis.set(d, false)
-        EventWorker.perform_async(d)
+        # とても重い処理をバックエンドのQueueに任せる
+        Worker.perform_async(d)
         content_type :json
         res = {
             result: "ok"
