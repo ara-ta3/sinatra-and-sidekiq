@@ -1,8 +1,14 @@
+BUNDLE=bundle
+
+
 install:
-	bundle install
+	$(BUNDLE) install --path vendor/bundle
 
-run:
-	bundle exec unicorn -c unicorn.rb
+run: log
+	$(BUNDLE) exec unicorn -c unicorn.rb
 
-run_sidekiq:
-	bundle exec sidekiq -r ./Worker.rb -q event
+run_sidekiq: log
+	$(BUNDLE) exec sidekiq -r ./Worker.rb -q event
+
+log:
+	mkdir -p $@
